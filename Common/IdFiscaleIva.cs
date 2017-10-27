@@ -9,9 +9,6 @@ namespace FatturaElettronica.Common
     /// </summary>
     public class IdFiscaleIVA : BaseClassSerializable
     {
-        private string _idPaese;
-        private string _idCodice;
-
         public IdFiscaleIVA() { }
         public IdFiscaleIVA(XmlReader r) : base(r) { }
 
@@ -19,24 +16,12 @@ namespace FatturaElettronica.Common
         /// Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.
         /// </summary>
         [DataProperty]
-        public string IdPaese {
-            get { return _idPaese; }
-            set {
-                _idPaese = CleanString(value);
-                NotifyChanged();
-            }
-        }
+        public string IdPaese { get; set; }
 
         /// <summary>
         /// Codice identificativo fiscale.
         /// </summary>
         [DataProperty]
-        public string IdCodice {
-            get { return _idCodice; }
-            set {
-                _idCodice = CleanString(value);
-                NotifyChanged();
-            }
-        }
+        public string IdCodice { get; set; }
     }
 }

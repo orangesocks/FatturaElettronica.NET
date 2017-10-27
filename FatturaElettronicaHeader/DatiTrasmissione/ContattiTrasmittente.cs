@@ -8,9 +8,6 @@ namespace FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione
     /// </summary>
     public class ContattiTrasmittente : BaseClassSerializable
     {
-        private string _telefono;
-        private string _email;
-
         public ContattiTrasmittente() { }
         public ContattiTrasmittente(XmlReader r) : base(r) { }
 
@@ -18,24 +15,12 @@ namespace FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione
         /// Contatto telefonico fisso o mobile.
         /// </summary>
         [DataProperty]
-        public string Telefono {
-            get { return _telefono; }
-            set {
-                _telefono = CleanString(value);
-                NotifyChanged();
-            }
-        }
+        public string Telefono { get; set; }
 
         /// <summary>
         /// Indirizzo di posta elettronica.
         /// </summary>
         [DataProperty]
-        public string Email {
-            get { return _email; }
-            set {
-                _email = CleanString(value);
-                NotifyChanged();
-            }
-        }
+        public string Email { get; set; }
     }
 }

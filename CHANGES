@@ -1,13 +1,51 @@
 Changelog
 =========
 
+v0.7
+====
+
+Rilasciata il 4.10.2017
+
+- Spostata serializzazione su package indipendente FatturaElettronica.Core.
+- Abbandonato il profilo PCL in favore di NetStandard 1.1.
+
+v0.6.3
+======
+
+Rilasciata il 17.7.2017
+
+- Fix: RappresentanteFiscale viene erroneamente serializzato come 'Rappresentante' causando errore convalida 200 
+  da parte del sistema PA. Closes #49.
+- README: Aggiunta opzione IgnoreComments a XmlReader per evitare crash nel caso di commenti nel XML. Closes #45.
+
+v0.6.2
+======
+
+Rilasciata il 23.5.2017.
+
+- Fix: Falso errore di convalida 00423 quando PrezzoTotale è valorizzato con piu di due decimali. Closes #45.
+
+v0.6.1
+======
+
+Rilasciata il 5.5.2017.
+
+- Fix: Falso errore di convalida 00415 quando DatiCassaPrevidenziale è valorizzato ma non ha Ritenuta="SI". Closes #44.
+
 v0.6.0
 ======
 
-Non ancora rilasciata.
+Rilasciata il 27.4.2017.
 
 - Assembly non più strong-named. Closes #41.
 - README: aggiunti esempi di introspezione e modifica degli elementi FatturaElettronicaBody. Closes #38.
+
+v0.5.1
+======
+
+Rilasciata il 26.4.2017.
+
+- Fix: Errore 00421 non tiene conto della tolleranza garantita di 0.01 centesimi. Closes #43.
 
 v0.5.0
 ======
