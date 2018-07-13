@@ -30,19 +30,10 @@ namespace FatturaElettronica.Validators
                 .WithErrorCode("00427");
             RuleFor(dt => dt.ContattiTrasmittente)
                 .SetValidator(new ContattiTrasmittenteValidator())
-                .When(x=>!x.ContattiTrasmittente.IsEmpty());
+                .When(x => !x.ContattiTrasmittente.IsEmpty());
             RuleFor(dt => dt.PECDestinatario)
-                .NotEmpty()
-                .When(dt => dt.CodiceDestinatario == "0000000")
-                .WithMessage("{PropertyName} non valorizzato a fronte di Codice Destinatario con valore 0000000")
-                .WithErrorCode("00426");
-            RuleFor(dt => dt.PECDestinatario)
-                .Length(7, 256);
-            RuleFor(dt => dt.PECDestinatario)
-                .Empty()
-                .When(dt => dt.CodiceDestinatario != "0000000")
-                .WithMessage("{PropertyName} valorizzato a fronte di Codice Destinatario con valore diverso da 0000000")
-                .WithErrorCode("00426");
+                .Length(7, 256)
+                .When(x => !string.IsNullOrEmpty(x.PECDestinatario));
         }
     }
 }
