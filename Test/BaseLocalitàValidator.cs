@@ -1,13 +1,12 @@
 ﻿using FatturaElettronica.Tabelle;
 using FluentValidation;
-using FluentValidation.TestHelper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests
 {
     [TestClass]
-    public abstract class BaseLocalitàValidator<TClass, TValidator> 
-        : BaseClass<TClass, TValidator> 
+    public abstract class BaseLocalitàValidator<TClass, TValidator>
+        : BaseClass<TClass, TValidator>
         where TClass : FatturaElettronica.Common.Località
         where TValidator : IValidator<TClass>
 
@@ -68,9 +67,9 @@ namespace Tests
             AssertOptional(x => x.Provincia);
         }
         [TestMethod]
-        public void ProvinciaOnlyAcceptsTableValues()
+        public void ProvinciaOnlyAcceptsValidValues()
         {
-            AssertOnlyAcceptsTableValues<Provincia>(x => x.Provincia);
+            AssertProvinciaOnlyAcceptsValidValues(x => x.Provincia);
         }
         [TestMethod]
         public void NazioneIsRequired()

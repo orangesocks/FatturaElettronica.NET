@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using FatturaElettronica.FatturaElettronicaBody.DatiPagamento;
+using FatturaElettronica.Ordinaria.FatturaElettronicaBody.DatiPagamento;
 using FatturaElettronica.Tabelle;
 
 namespace FatturaElettronica.Validators
@@ -11,8 +11,8 @@ namespace FatturaElettronica.Validators
             RuleFor(x => x.CondizioniPagamento)
                 .NotEmpty()
                 .SetValidator(new IsValidValidator<CondizioniPagamento>());
-            RuleFor(x => x.DettaglioPagamento)
-                .SetCollectionValidator(new DettaglioPagamentoValidator());
+            RuleForEach(x => x.DettaglioPagamento)
+                .SetValidator(new DettaglioPagamentoValidator());
             RuleFor(x => x.DettaglioPagamento)
                 .NotEmpty();
         }

@@ -1,19 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.1</TargetFramework>
+    <TargetFrameworks>netstandard1.1;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.8.1</Version>
+    <Version>2.0.2</Version>
     <PackageId>FatturaElettronica</PackageId>
     <Authors>Nicola Iarocci</Authors>
     <Company>CIR 2000</Company>
     <Product>FatturaElettronica.NET</Product>
     <Description>Fattura elettronica per le aziende e la pubblica amministrazione italiana</Description>
-    <Copyright>Copyright © CIR2000 2017-2018</Copyright>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/FatturaElettronica/FatturaElettronica.NET/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>http://fatturaelettronicaopensource.org</PackageProjectUrl>
+    <Copyright>Copyright © CIR2000 2017-2019</Copyright>
+    <PackageProjectUrl>https://fatturaelettronicaopensource.org</PackageProjectUrl>
     <RepositoryUrl>https://github.com/FatturaElettronica/FatturaElettronica.NET</RepositoryUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
+
+<ItemGroup>
+    <None Include="LICENSE.txt" Pack="true" PackagePath="" />
+</ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Tests\**" />
@@ -25,10 +29,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FatturaElettronica.Core" Version="0.1.0" />
-    <PackageReference Include="FluentValidation" Version="7.1.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
+    <PackageReference Include="FatturaElettronica.Core" Version="2.0" />
+    <PackageReference Include="FluentValidation" Version="8.1.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" Condition="$(TargetFramework) == 'netstandard1.1'" />
   </ItemGroup>
 
 </Project>

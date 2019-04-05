@@ -1,4 +1,4 @@
-﻿using FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore;
+﻿using FatturaElettronica.Ordinaria.FatturaElettronicaHeader.CedentePrestatore;
 using FatturaElettronica.Tabelle;
 using FluentValidation;
 
@@ -10,7 +10,7 @@ namespace FatturaElettronica.Validators
         {
             RuleFor(x => x.Ufficio)
                 .NotEmpty()
-                .SetValidator(new IsValidValidator<Provincia>());
+                .Matches(@"^[A-Z]{2}$");
             RuleFor(x => x.NumeroREA)
                 .NotEmpty()
                 .BasicLatinValidator()

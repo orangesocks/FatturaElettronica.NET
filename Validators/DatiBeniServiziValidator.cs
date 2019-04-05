@@ -1,4 +1,4 @@
-﻿using FatturaElettronica.FatturaElettronicaBody.DatiBeniServizi;
+﻿using FatturaElettronica.Ordinaria.FatturaElettronicaBody.DatiBeniServizi;
 using FluentValidation;
 
 namespace FatturaElettronica.Validators
@@ -7,12 +7,12 @@ namespace FatturaElettronica.Validators
     {
         public DatiBeniServiziValidator()
         {
-            RuleFor(x => x.DettaglioLinee)
-                .SetCollectionValidator(new DettaglioLineeValidator());
+            RuleForEach(x => x.DettaglioLinee)
+                .SetValidator(new DettaglioLineeValidator());
             RuleFor(x => x.DettaglioLinee)
                 .NotEmpty();
-            RuleFor(x => x.DatiRiepilogo)
-                .SetCollectionValidator(new DatiRiepilogoValidator());
+            RuleForEach(x => x.DatiRiepilogo)
+                .SetValidator(new DatiRiepilogoValidator());
             RuleFor(x => x.DatiRiepilogo)
                 .NotEmpty();
         }
