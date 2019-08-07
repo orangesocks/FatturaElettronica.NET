@@ -20,8 +20,7 @@ namespace FatturaElettronica.Validators
                 .Latin1SupplementValidator();
             RuleFor(x => x.UnitaMisura)
                 .Length(1, 10)
-                .BasicLatinValidator()
-                .When(x => !string.IsNullOrEmpty(x.UnitaMisura));
+                .BasicLatinValidator();
             RuleForEach(x => x.ScontoMaggiorazione)
                 .SetValidator(new ScontoMaggiorazioneValidator());
             RuleFor(x => x.PrezzoTotale)
@@ -74,7 +73,7 @@ namespace FatturaElettronica.Validators
 
             }
             return Math.Abs(Math.Round(challenge.PrezzoTotale, 2, MidpointRounding.AwayFromZero)
-                - Math.Round(prezzo * (challenge.Quantita ?? 1), 2, MidpointRounding.AwayFromZero)) <= 0.01m;
+                - prezzo * (challenge.Quantita ?? 1)) <= 0.01m;
         }
     }
 }

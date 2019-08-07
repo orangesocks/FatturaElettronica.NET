@@ -45,11 +45,6 @@ namespace Ordinaria.Tests
             AssertMustBeLatin1Supplement(x => x.Descrizione);
         }
         [TestMethod]
-        public void UnitaMisuraIsOptional()
-        {
-            AssertOptional(x => x.UnitaMisura);
-        }
-        [TestMethod]
         public void UnitaMisuraMinMaxLength()
         {
             AssertMinMaxLength(x => x.UnitaMisura, 1, 10);
@@ -117,6 +112,13 @@ namespace Ordinaria.Tests
             challenge.PrezzoUnitario = 20.5m;
             challenge.Quantita = 2;
             challenge.PrezzoTotale = 42;
+            validator.ShouldHaveValidationErrorFor(x => x.PrezzoTotale, challenge).WithErrorCode("00423");
+
+            // https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/181
+            challenge.ScontoMaggiorazione.Clear();
+            challenge.PrezzoUnitario = 0.030987m;
+            challenge.Quantita = 22633;
+            challenge.PrezzoTotale = 701.34m;
             validator.ShouldHaveValidationErrorFor(x => x.PrezzoTotale, challenge).WithErrorCode("00423");
 
             // https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/45

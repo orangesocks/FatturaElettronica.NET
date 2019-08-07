@@ -18,11 +18,12 @@ anche per una instanza di `FatturaSemplificata`.
 ## Caricare la fattura da XML
 
 ```cs
-    // Lettura da file XML
+            // Lettura da file XML
     var readerSettings = new XmlReaderSettings
     {
         IgnoreWhitespace = true,
-        IgnoreComments = true
+        IgnoreComments = true,
+        IgnoreProcessingInstructions = true
     };
     using (var r = XmlReader.Create("IT01234567890_12345.xml", readerSettings))
     {
@@ -145,7 +146,7 @@ namespace DemoApp
 
             var fattura = new FatturaOrdinaria();
             // In alternativa usare CreateInstance() per ottenere una istanza già tipizzata.
-            // Questa chiamata restituisce fattura con CodiceDestinatario = "0000000" 
+            // Questa chiamata restituisce fattura con CodiceDestinatario = "0000000"
             // FormatoTrasmissione = "FPR12":
             fattura = FatturaOrdinaria.CreateInstance(Instance.Privati);
 
@@ -153,7 +154,9 @@ namespace DemoApp
             var readerSettings = new XmlReaderSettings
             {
                 IgnoreWhitespace = true,
-                IgnoreComments = true
+                IgnoreComments = true,
+                IgnoreProcessingInstructions = true
+
             };
             using (var r = XmlReader.Create("IT01234567890_12345.xml", readerSettings))
             {
