@@ -4,10 +4,30 @@ Changelog
 In Development
 --------------
 
+- hic sunt leones.
+
+v2.0.8
+------
+
+Released on December 2m 2019
+
+- Fix: convalida fattura semplificata, importo massimo portato a 400 euro ([#233][233])
+
+v2.0.7
+------
+
+Released on November 28, 2019
+
+- Fix: errore nell'ordine dei campi CedentePrestatore in fattura semplificata ([#220][220])
+- Test suite aggiornata a NetCore 3.0
+- Fix: refuso in TOC.md ([#221][221])
 - Fix: Aggiunto il Kosovo alla tabella IdPaese ([#214][214])
 - Tutorial: Aggiunto `IgnoreProcessingInstructions` a `XmlReaderSettings` per evitare crash quando
   nodi "processing instructions" (es: `xml-stylesheet`) sono presenti nel XML. ([#209][209])
 
+[233]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/233
+[220]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/220
+[221]: https://github.com/FatturaElettronica/FatturaElettronica.NET/pull/221
 [214]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/214
 [209]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/209
 
