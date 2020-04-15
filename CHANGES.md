@@ -4,12 +4,69 @@ Changelog
 In Development
 --------------
 
-- hic sunt leones.
+v 3.0-beta.3
+------------
+
+Released on April 9, 2020
+
+- `CreateInstanceFromXml` ora leggere anche file firmati digitalmente (.p7m) ([#256][256]) 
+- Incorporato FatturaElettronica.Core ([#255][255])
+- Incorporato FatturaElettronica.Extensions ([#255][255])
+- Persa dipendenza da FatturaElettronica.Core ([#255][255])
+- Persa dipendenza da FatturaElettronica.Extensions ([#255][255])
+- Ricordarsi di rimuovere le dipendenze da FatturaElettronica.Extensions e 
+  FatturaElettronica.Core.
+- La API di FatturaElettronica.Core, ora incorporata in questo package, è stata
+  spostata dal namespace `FatturaElettronica.Common` a `FatturaElettronica.Core`.
+  
+[256]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/256
+
+v 3.0-beta.2
+------------
+
+Released on April 6, 2020
+
+- Fix: NullReferenceException nel metodo Equals ([Core#42][Core#42])
+- Aggiornata dipendenza FatturaElettronica.Core a 2.0.1.
+
+[255]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/255
+[Core#42]: https://github.com/FatturaElettronica/FatturaElettronica.Core/issues/42
+
+v 3.0-beta.1
+------------
+
+Released on March 20, 2020
+
+- Supporto per le specifiche tecniche v1.6 aggiornate il 28.2.2020 e utilizzabili a partire dal 4 maggio 2020. Si veda:
+
+  - [Allegato A - Specifiche tecniche versione 1.6 (pdf)](https://www.agenziaentrate.gov.it/portale/documents/20143/2370834/Allegato+A+-+Specifiche+tecniche+vers+1.6_.pdf/a9917ec2-29a3-4f4a-a7d0-93af96fcaad5)
+  
+v 2.1.1
+-------
+
+Released on March 20, 2020
+
+- Fix: Attributo `schemaLocation` causava problemi con alcuni client Java. ([#250][250])
+
+[250]: https://github.com/FatturaElettronica/FatturaElettronica.NET/pull/250
+
+v 2.1.0
+-------
+
+Released on February 7, 2020
+
+- New: `FatturaBase.CreateInstanceFromXml()` carica stream XML e restituisce una istanza di FatturaOrdinaria o FatturaSemplificata ([#240][240])
+- Fix: Semplificata.DatiBeniServizi.DatiIVA: Aliquota o Importo obbligatori ([#238][238])
+- Fix: Semplificata.CessionarioCommittente.IdFiscaleIva va convalidato se valorizzato ([#242][242])
+
+[240]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/240
+[238]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/238
+[242]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/242
 
 v2.0.8
 ------
 
-Released on December 2m 2019
+Released on December 2, 2019
 
 - Fix: convalida fattura semplificata, importo massimo portato a 400 euro ([#233][233])
 

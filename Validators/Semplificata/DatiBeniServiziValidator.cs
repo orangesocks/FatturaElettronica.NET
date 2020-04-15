@@ -15,11 +15,11 @@ namespace FatturaElettronica.Validators.Semplificata
             RuleFor(x => x.Importo)
                 .NotEmpty<DatiBeniServizi, decimal>();
             RuleFor(x => x.DatiIVA)
-                .NotEmpty();
+                .SetValidator(new DatiIVAValidator());
             RuleFor(x => x.Natura)
                 .Must(natura => !string.IsNullOrEmpty(natura))
                 .When(x => x.DatiIVA.Aliquota == 0m && x.DatiIVA.Imposta == 0m)
-                .WithMessage("Natura non presente a fronte di Aliquota IVA ed Imposta pari a 0")
+                .WithMessage("L’indicazione di un’aliquota IVA pari a zero obbliga all’indicazione della natura dell’operazione che giustifichi la non imponibilità della stessa")
                 .WithErrorCode("00400");
             RuleFor(x => x.Natura)
                 .Must(natura => string.IsNullOrEmpty(natura))

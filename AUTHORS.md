@@ -15,12 +15,14 @@ Collaboratori
 - Claudio Lepri
 - Diego Martelli
 - Emanuele Curati
+- Emanuele Zavallone
 - Fabio Calvigioni
 - Federico Dipuma
 - Gaetano Pizzol
 - Marco Tessitore
 - Massimo Linossi
 - Michael Mairegger
+- Puma
 - ZephirPFS47
 - gminutillo
 
