@@ -2,6 +2,7 @@
 using System.IO;
 using System.Xml;
 using FatturaElettronica.Defaults;
+using FatturaElettronica.Extensions;
 using FatturaElettronica.Ordinaria;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -53,6 +54,7 @@ namespace FatturaElettronica.Test
         [TestMethod]
         public void DeserializeAnyType()
         {
+            
             var f = DeserializeAny("Samples/IT01234567890_FPA02.xml");
             Assert.IsTrue(f.Validate().IsValid &&
                           f.GetFormatoTrasmissione() == FormatoTrasmissione.PubblicaAmministrazione);
@@ -60,7 +62,6 @@ namespace FatturaElettronica.Test
             Assert.IsTrue(f.Validate().IsValid && f.GetFormatoTrasmissione() == FormatoTrasmissione.Privati);
             f = DeserializeAny("Samples/IT01234567890_FSM10.xml");
             Assert.IsTrue(f.Validate().IsValid && f.GetFormatoTrasmissione() == FormatoTrasmissione.Semplificata);
-            
             f = DeserializeAny("Samples/IT02182030391_31.xml.p7m");
             Assert.IsTrue(f.Validate().IsValid && f.GetFormatoTrasmissione() == FormatoTrasmissione.Privati);
             f = DeserializeAny("Samples/IT02182030391_31.Base64.xml.p7m");
