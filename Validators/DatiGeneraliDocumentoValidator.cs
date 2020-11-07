@@ -33,7 +33,8 @@ namespace FatturaElettronica.Validators
             RuleFor(x => x.DatiCassaPrevidenziale)
                 .Must((datiGeneraliDocumento, datiCassa) =>
                 {
-                    return (datiCassa.Count(a => a.Ritenuta == "SI") <= 0) || datiGeneraliDocumento.DatiRitenuta.Count > 0;
+                    return (datiCassa.Count(a => a.Ritenuta == "SI") <= 0) ||
+                           datiGeneraliDocumento.DatiRitenuta.Count > 0;
                 })
                 .WithMessage("DatiRitenuta non presente a fronte di DatiCassaPrevidenziale.Ritenuta valorizzato")
                 .WithErrorCode("00415");
@@ -44,6 +45,10 @@ namespace FatturaElettronica.Validators
             RuleFor(x => x.Art73)
                 .Equal("SI")
                 .When(x => !string.IsNullOrEmpty(x.Art73));
+            RuleFor(x => x.ImportoTotaleDocumento)
+                .ScalePrecision(2, 13);
+            RuleFor(x => x.Arrotondamento)
+                .ScalePrecision(2, 13);
         }
     }
 }

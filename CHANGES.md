@@ -4,7 +4,43 @@ Changelog
 In Development
 --------------
 
-- hic sunt leones.
+- hic sunt leones
+
+v 3.0.4
+-------
+
+Released on November 3, 2020
+
+- Fix: Migliorata la validazione errore 00444 in `DatiRiepilogo` ([#287][287])
+- Fix: Migliorata la validazione errore 00443 in `DatiRiepilogo` ([#281][281])
+- Fix: Aggiornato attributo `SchemaLocation` ([#282][282], [#286][286])
+- Fix: Supporto per `SistemaEmittente` in deserializzazione ([#278][278])
+- Fix: `DatiRiepilogo.RiferimentoNormativo` è richiesto quando `Natura` è valorizzato ([#284][284])
+- Aggiornata dipendenza FluentValidation a 9.2.2
+- Aggiornata dipendenza Newtonsoft.Json a 12.0.3
+- Aggiornata dipendenza BouncyCastle a 1.8.8
+- Aggiornata dipendenza MSTest.TestFramework a 2.1.2
+- Aggiornata dipendenza MSTest.TestAdapter a 2.1.2
+- Aggiornata dipendenza Microsoft.NET.Test.Sdk a 16.7.1
+- Abbandonata dipendenza obsoleta da `System.Xml.XmlSerializer`
+
+[287]: https://github.com/FatturaElettronica/FatturaElettronica.NET/pull/287
+[281]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/281
+[286]: https://github.com/FatturaElettronica/FatturaElettronica.NET/pull/286
+[282]: https://github.com/FatturaElettronica/FatturaElettronica.NET/pull/282
+[278]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/278
+[284]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/284
+
+v 3.0.3
+-------
+
+Released on August 25, 2020
+
+- Fix: I tipi decimali dovrebbero essere convalidati per verificare che abbiano 2 o 11 decimali ([#275][275])
+- Fix: `CodiceDestinatario` dovrebbe essere maiuscolo e non contenere altri caratteri al di fuori di A-Z 0-9 ([#272][272])
+
+[275]: https://github.com/FatturaElettronica/FatturaElettronica.NET/pull/275
+[272]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/272
 
 v 3.0.2
 -------

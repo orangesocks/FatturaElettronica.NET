@@ -1,4 +1,5 @@
 ﻿using System;
+using FatturaElettronica.Extensions;
 using FatturaElettronica.Ordinaria.FatturaElettronicaBody.DatiBeniServizi;
 using FatturaElettronica.Tabelle;
 using FluentValidation;
@@ -39,7 +40,7 @@ namespace FatturaElettronica.Validators
                 .WithMessage("Natura non presente a fronte di Aliquota IVA pari a 0")
                 .WithErrorCode("00400");
             RuleFor(x => x.Natura)
-                .Must(natura => string.IsNullOrEmpty(natura))
+                .Must(string.IsNullOrEmpty)
                 .When(x => x.AliquotaIVA > 0)
                 .WithMessage("Natura presente a fronte di Aliquota IVA diversa da zero")
                 .WithErrorCode("00401");
@@ -51,29 +52,34 @@ namespace FatturaElettronica.Validators
                 .SetValidator(new AltriDatiGestionaliValidator());
             RuleFor(x => x.Quantita)
                 .GreaterThanOrEqualTo(0);
+            RuleFor(x => x.PrezzoUnitario)
+                .ScalePrecision8DecimalType();
+            RuleFor(x => x.PrezzoTotale)
+                .ScalePrecision8DecimalType();
         }
 
-        private bool PrezzoTotaleValidateAgainstError00423(DettaglioLinee challenge)
+        private static bool PrezzoTotaleValidateAgainstError00423(DettaglioLinee challenge)
         {
             var prezzo = Math.Round(challenge.PrezzoUnitario, 8, MidpointRounding.AwayFromZero);
             foreach (var sconto in challenge.ScontoMaggiorazione)
             {
-
                 if (sconto.Importo == null && sconto.Percentuale == null) continue;
 
                 var importo =
-                    (decimal)((sconto.Importo != null)
-                    ? Math.Abs((decimal)sconto.Importo)
-                    : (prezzo * sconto.Percentuale) / 100);
+                    (decimal) (sconto.Importo != null
+                        ? Math.Abs((decimal) sconto.Importo)
+                        : sconto.Percentuale != null
+                            ? prezzo * sconto.Percentuale / 100
+                            : prezzo);
 
                 if (sconto.Tipo == "SC")
                     prezzo -= importo;
                 else
                     prezzo += importo;
-
             }
+
             return Math.Abs(Math.Round(challenge.PrezzoTotale, 2, MidpointRounding.AwayFromZero)
-                - prezzo * (challenge.Quantita ?? 1)) <= 0.01m;
+                            - prezzo * (challenge.Quantita ?? 1)) <= 0.01m;
         }
     }
 }

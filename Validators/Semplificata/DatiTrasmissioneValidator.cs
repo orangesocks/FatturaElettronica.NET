@@ -1,6 +1,5 @@
 ﻿using FatturaElettronica.Semplificata.FatturaElettronicaHeader.DatiTrasmissione;
 using FatturaElettronica.Tabelle;
-using FatturaElettronica.Validators;
 using FluentValidation;
 
 namespace FatturaElettronica.Validators.Semplificata
@@ -21,6 +20,9 @@ namespace FatturaElettronica.Validators.Semplificata
                 .WithErrorCode("00428");
             RuleFor(dt => dt.CodiceDestinatario)
                 .NotEmpty();
+            RuleFor(dt => dt.CodiceDestinatario)
+                .Matches(@"^[A-Z0-9]+$")
+                .When(x => !string.IsNullOrEmpty(x.CodiceDestinatario));
             RuleFor(dt => dt.CodiceDestinatario)
                 .Length(7)
                 .When(dt => dt.FormatoTrasmissione == Defaults.FormatoTrasmissione.Semplificata)
