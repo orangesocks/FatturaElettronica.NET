@@ -4,7 +4,43 @@ Changelog
 In Development
 --------------
 
-- hic sunt leones
+- Validazione `CAP`: deve contenere solo valori numerici ([#310][310])
+
+[310]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/310
+
+v 3.1.0
+-------
+
+Released on December 30, 2020
+
+- Questa versione si allinea alle regole di convalida in vigore dal 1 Gennaio 2021.
+- Rimosso supporto per valori N2, N3, N6 per il campo `DatiRiepiloto.Natura` ([#307][307])
+- Aggiunta convalida per errore 00313 ([#300][300])
+- `Defaults.RootElement.ExtraAttributes` diventa una read-write property ([#303][303])
+- `Defaults.RootElement.Prefix` diventa una read-write property ([#303][303])
+- Migrazione CI da Azure Pipelines a GitHub Actions (`ubuntu-latest`, `windows-latest`, `macos-latest`) ([#298][298])
+- Impostato target framework della test suite a `net5.0` ([#295][295])
+- Aggiornata dipendenza Portable.BouncyCastle a 1.8.9
+- Aggiornata dipendenza Microsoft.NET.Test.Sdk a 16.8.3
+- Aggiornata dipendenza FluentValidation a 9.3.0
+- Aggiornata dipendenza System.Security.Cryptography.Pkcs a 5.0.1
+
+
+[300]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/300
+[303]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/303
+[307]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/307
+[298]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/298
+[295]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/295
+
+v 3.0.5
+-------
+
+Released on November 26, 2020
+
+- Fix: `SistemaEmittente` non va serializzato come elemento XML ([#294][294])
+- Fix: rimossa convalida `DatiRiepilogo.RiferimentoNormativo` è richiesto quando `Natura` è valorizzato ([#284][284])
+
+[294]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/294
 
 v 3.0.4
 -------
