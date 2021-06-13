@@ -4,6 +4,19 @@ Changelog
 In Development
 --------------
 
+- Fix: ripristinato un setter rimosso nella v3.1.5 ([#346][346])
+  
+[346]: https://github.com/FatturaElettronica/FatturaElettronica.NET/issues/346
+
+v 3.1.5
+-------
+
+Released on May 14, 2021
+
+- Risolo problema deserializzazione Json per la classe `Allegati` ([#344][344])
+
+[344]: https://github.com/FatturaElettronica/FatturaElettronica.NET/pull/344
+
 v 3.1.4
 -------
 
